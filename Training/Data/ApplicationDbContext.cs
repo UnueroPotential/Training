@@ -15,6 +15,7 @@ namespace Training.Data
         }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Other> Others { get; set; }
+        public DbSet<AspUser> AspUsers { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             //SEEDING DATA

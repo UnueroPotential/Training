@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Training.Data
 {
-    public class Other:IdentityUser
+    public class Other:AspUser
     {
-        public string OtherDescription { get; set; }
+        
     }
 }

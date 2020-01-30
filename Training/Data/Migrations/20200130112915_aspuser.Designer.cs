@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Training.Data;
 
 namespace Training.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200130112915_aspuser")]
+    partial class aspuser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,15 +47,15 @@ namespace Training.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "09a85e99-072b-4799-b6d1-c78b21e4b637",
-                            ConcurrencyStamp = "55438174-a004-42d6-aca1-9f93efca1f9e",
+                            Id = "f131f119-aa3a-431c-afc5-f61001d8edbb",
+                            ConcurrencyStamp = "6fdf1d60-50ec-4aeb-a135-3a12138b8df0",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "26ce3bbf-461d-4d09-85f1-d50873525044",
-                            ConcurrencyStamp = "778791dc-a4be-4ef6-91b9-cfd583f72075",
+                            Id = "3be152ea-1cfd-40b8-83c6-722a17b8c482",
+                            ConcurrencyStamp = "f8f655a2-54a9-419c-9c80-c5ccfd07c7e3",
                             Name = "staff",
                             NormalizedName = "STAFF"
                         });
@@ -205,25 +207,21 @@ namespace Training.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Training.Data.AspUser", b =>
+            modelBuilder.Entity("Training.Data.Admin", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
                     b.Property<string>("Description");
-
-                    b.HasDiscriminator().HasValue("AspUser");
-                });
-
-            modelBuilder.Entity("Training.Data.Admin", b =>
-                {
-                    b.HasBaseType("Training.Data.AspUser");
 
                     b.HasDiscriminator().HasValue("Admin");
                 });
 
             modelBuilder.Entity("Training.Data.Other", b =>
                 {
-                    b.HasBaseType("Training.Data.AspUser");
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.Property<string>("Description")
+                        .HasColumnName("Other_Description");
 
                     b.HasDiscriminator().HasValue("Other");
                 });

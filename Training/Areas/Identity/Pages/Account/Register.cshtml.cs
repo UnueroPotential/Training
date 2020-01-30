@@ -70,7 +70,7 @@ namespace Training.Areas.Identity.Pages.Account
                 var user = new Other
                 { UserName = Input.Email,
                     Email = Input.Email,
-                    OtherDescription = "Other User"
+                    Description = "Other User"
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
